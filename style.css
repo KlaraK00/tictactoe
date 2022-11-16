@@ -30,11 +30,64 @@ body {
     opacity: 0.5;
 }
 
-.winnerLine {
+.winnerLineHorizontal {
+    z-index: 9;
     width: 400px;
     height: 10px;
     background-color: rgba(0, 0, 0);
     position: absolute;
+    transform: scale(0.0);
+    transition: transform 225ms ease-in-out;
+}
+
+.winnerLineVertical {
+    z-index: 9;
+    width: 400px;
+    height: 10px;
+    background-color: rgba(0, 0, 0);
+    position: absolute;
+    transform: scale(0.0) rotate(90deg);
+    transition: transform 225ms ease-in-out;
+}
+
+.winnerLineDiagonal1 {
+    z-index: 9;
+    width: 500px;
+    height: 10px;
+    background-color: rgba(0, 0, 0);
+    position: absolute;
+    transform: rotate(45deg) scale(0.0);
+    transition: transform 225ms ease-in-out;
+}
+
+.winnerLineDiagonal2 {
+    z-index: 9;
+    width: 500px;
+    height: 10px;
+    background-color: rgba(0, 0, 0);
+    position: absolute;
+    transform: rotate(-45deg) scale(0.0);
+    transition: transform 225ms ease-in-out;
+}
+
+.winnerDiv {
+    position: relative;
+    position: absolute;
+    right: -41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.winnerDiv span {
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.winnerDiv img {
+    width: 500px;
+    height: 400px;
 }
 
 table {

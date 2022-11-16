@@ -1,14 +1,19 @@
 let fields = [];
-
 let currentShape = "cross";
-
 let directionOfLine = "";
+let gameOver = false;
 
 function fillShape(id) {
-    fields[id] = currentShape;
-    isItCircleOrCross(id);
-    checkWinner();
-    console.log(fields);
+    if (noGameOver()) {
+        fields[id] = currentShape;
+        isItCircleOrCross(id);
+        checkWinner();
+        console.log(fields);
+    }
+}
+
+function noGameOver() {
+    return !gameOver;
 }
 
 function isItCircleOrCross(id) {
@@ -50,6 +55,7 @@ function checkWinner() {
     for (let i = 0; i < 9; i+=3) {
         if (fields[i] == fields[i+1] && fields[i+1] == fields[i+2] && fields[i]) {
             console.log(fields[i] + ' du hast gewonnen!');
+            gameOver = true;
             directionOfLine = 'horizotal';
             addHorizontalWinnerLine(i);
         } 
@@ -58,6 +64,7 @@ function checkWinner() {
     for (let i = 0; i < 3; i++) {
         if (fields[i] == fields[i+3] && fields[i+3] == fields[i+6] && fields[i]) {
             console.log(fields[i] + ' du hast gewonnen!');
+            gameOver = true;
             directionOfLine = 'vertical';
             addVerticalWinnerLine(i);
         } 
@@ -65,11 +72,13 @@ function checkWinner() {
 //diagonal
     if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
         console.log(fields[0] + ' du hast gewonnen!');
+        gameOver = true;
         directionOfLine = 'diagonal1';
         addDiagonalWinnerLine();
     }
     if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
         console.log(fields[2] + ' du hast gewonnen!');
+        gameOver = true;
         directionOfLine = 'diagonal2';
         addDiagonalWinnerLine();
     }

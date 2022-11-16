@@ -1,4 +1,5 @@
 <!-- table>tr>td*3 -->
+<!-- winnerDiv einfädeln und video über wann winner noch nicht fertig! -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,7 @@
     <script src="script.js"></script>
     <title>Tic tac toe</title>
 </head>
+
 <body class="justAlignCenter">
     <div class="playerPanel">
         <div class="playerInactive" id="player1">
@@ -20,16 +22,23 @@
         </div>
     </div>
 
+
+
     <div style="position: relative;">
 
-        <div id="line1" class="winnerLine" style="top: 62px; transform: scale(0.0);"></div>
-        <div id="line2" class="winnerLine" style="top: 202px; transform: scale(0.0);"></div>
-        <div id="line3" class="winnerLine" style="top: 342px; transform: scale(0.0);"></div>
-        <div id="line4" class="winnerLine" style="top: 202px; right: 147px; transform: rotate(90deg) scale(0.0);"></div>
-        <div id="line5" class="winnerLine" style="top: 202px; right: 7px; transform: rotate(90deg) scale(0.0);"></div>
-        <div id="line6" class="winnerLine" style="top: 202px; left: 148px; transform: rotate(90deg) scale(0.0);"></div>
-        <div id="line7" class="winnerLine" style="top: 202px; left: -42px; transform: rotate(45deg) scale(0.0); width: 500px;"></div>
-        <div id="line8" class="winnerLine" style="top: 202px; left: -42px; transform: rotate(-45deg) scale(0.0); width: 500px"></div>
+        <div id="winnerDiv" class="winnerDiv d-none">
+            <img src="./img/Winner.png" alt="winner">
+            <span>YOU WON!</span>
+        </div>
+
+        <div id="line1" class="winnerLineHorizontal" style="top: 62px;"></div>
+        <div id="line2" class="winnerLineHorizontal" style="top: 202px;"></div>
+        <div id="line3" class="winnerLineHorizontal" style="top: 342px;"></div>
+        <div id="line4" class="winnerLineVertical" style="top: 202px; right: 147px;"></div>
+        <div id="line5" class="winnerLineVertical" style="top: 202px; right: 7px;"></div>
+        <div id="line6" class="winnerLineVertical" style="top: 202px; left: 148px;"></div>
+        <div id="line7" class="winnerLineDiagonal1" style="top: 202px; left: -42px;"></div>
+        <div id="line8" class="winnerLineDiagonal2" style="top: 202px; left: -42px;"></div>
 
         <table>
             <tr>
