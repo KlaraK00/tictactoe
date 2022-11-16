@@ -1,5 +1,40 @@
 body {
     height: 100vh;
+    flex-direction: column;
+}
+
+.playerPanel {
+    display: flex;
+    font-size: 32px;
+}
+
+.playerPanel div {
+    display: flex;
+    align-items: center;
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 32px;
+}
+
+.playerPanel img {
+    width: 60px;
+    height: 60px;
+    margin-right: 16px;
+}
+
+.notClickable {
+    pointer-events: none;
+}
+
+.playerInactive {
+    opacity: 0.5;
+}
+
+.winnerLine {
+    width: 400px;
+    height: 10px;
+    background-color: rgba(0, 0, 0);
+    position: absolute;
 }
 
 table {
@@ -52,4 +87,20 @@ tr td:last-child {
 
 .d-none {
     display: none;
+}
+
+.scale1 {
+    transform: scale(1.0) !important;
+}
+
+.scale2 {
+    transform: rotate(90deg) scale(1.0) !important;
+}
+
+.scale3 {
+    transform: rotate(45deg) scale(1.0) !important;
+}
+
+.scale4 {
+    transform: rotate(-45deg) scale(1.0) !important;
 }
