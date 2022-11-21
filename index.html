@@ -1,5 +1,6 @@
 <!-- table>tr>td*3 -->
 <!-- winnerDiv einfädeln und video über wann winner noch nicht fertig! -->
+<!-- responsive and karla-fehlermeldungen -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,11 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="fonts.css">
     <script src="script.js"></script>
     <title>Tic tac toe</title>
 </head>
 
-<body class="justAlignCenter">
+<body onload="checkMediaQuery()" class="justAlignCenter">
     <div class="playerPanel">
         <div class="playerInactive" id="player1">
             <img class="" src="./img/circle.png"> Player 1
@@ -27,6 +29,7 @@
     <div style="position: relative;">
 
         <div id="winnerDiv" class="winnerDiv d-none">
+            <button class="restartButton" onclick="restart()">Restart</button>
             <img src="./img/Winner.png" alt="winner">
             <span>YOU WON!</span>
         </div>

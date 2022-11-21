@@ -1,6 +1,7 @@
 body {
-    height: 100vh;
+    height: 95vh;
     flex-direction: column;
+    font-family: 'Karla', sans-serif;
 }
 
 .playerPanel {
@@ -34,7 +35,7 @@ body {
     z-index: 9;
     width: 400px;
     height: 10px;
-    background-color: rgba(0, 0, 0);
+    background-color: rgba(112, 112, 112);
     position: absolute;
     transform: scale(0.0);
     transition: transform 225ms ease-in-out;
@@ -44,7 +45,7 @@ body {
     z-index: 9;
     width: 400px;
     height: 10px;
-    background-color: rgba(0, 0, 0);
+    background-color: rgba(112, 112, 112);
     position: absolute;
     transform: scale(0.0) rotate(90deg);
     transition: transform 225ms ease-in-out;
@@ -54,7 +55,7 @@ body {
     z-index: 9;
     width: 500px;
     height: 10px;
-    background-color: rgba(0, 0, 0);
+    background-color: rgb(112, 112, 112);
     position: absolute;
     transform: rotate(45deg) scale(0.0);
     transition: transform 225ms ease-in-out;
@@ -64,7 +65,7 @@ body {
     z-index: 9;
     width: 500px;
     height: 10px;
-    background-color: rgba(0, 0, 0);
+    background-color: rgba(112, 112, 112);
     position: absolute;
     transform: rotate(-45deg) scale(0.0);
     transition: transform 225ms ease-in-out;
@@ -77,6 +78,20 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    animation: zoomIn 225ms ease-in-out;
+} 
+/* animation hinzufügen namens "zoomIn", dauert 225ms, verwendet als animation ease-in-out*/
+/* animation (keyframe) namens "zoomIn" definieren */
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .winnerDiv span {
@@ -90,6 +105,24 @@ body {
     height: 400px;
 }
 
+.restartButton {
+    border: 1px solid rgb(0, 0, 0);
+    background-color: green;
+    z-index: 99;
+    width: 150px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 97px;
+    border-radius: 5px;
+}
+
+.restartButton:hover {
+    background-color: black;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -101,7 +134,7 @@ tr {
 td {
     width: 133px;
     height: 133px;
-    border: 5px solid black;
+    border: 5px solid rgba(112, 112, 112);
     position: relative;
     cursor: pointer;
 }
@@ -156,4 +189,64 @@ tr td:last-child {
 
 .scale4 {
     transform: rotate(-45deg) scale(1.0) !important;
+}
+
+@media (max-width: 510px) {
+    .playerPanel img {
+        width: 30px;
+        height: 30px;
+        margin-right: 8px;
+    }
+
+    .playerPanel div {
+        margin-left: 8px;
+        margin-right: 8px;
+        margin-bottom: 16px;
+    }
+
+    tr {
+        width: 258px;
+    }
+
+    td {
+        width: 86px;
+        height: 86px;
+    }
+
+    .winnerDiv img {
+        width: 350px;
+        height: 300px;
+    }
+
+    .restartButton {
+        height: 30px;
+        width: 100px;
+        font-size: 16px;
+        bottom: 80px;
+    }
+
+    .winnerDiv span {
+    font-size: 40px;
+    }
+
+    .shape {
+        width: 50px;
+        height: 50px;
+    }
+
+    .winnerLineHorizontal {
+        width: 250px;
+    }
+
+    .winnerLineVertical {
+        width: 250px;
+    }
+
+    .winnerLineDiagonal1 {
+        width: 300px;
+    }
+
+    .winnerLineDiagonal2 {
+        width: 300px;
+    }
 }

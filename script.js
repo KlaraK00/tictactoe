@@ -8,7 +8,6 @@ function fillShape(id) {
         fields[id] = currentShape;
         isItCircleOrCross(id);
         checkWinner();
-        console.log(fields);
     }
 }
 
@@ -51,34 +50,39 @@ function changeToPlayer2() {
 }
 
 function checkWinner() {
-//horizontal
+    checkHorizontalWinner();
+    checkVerticalWinner();
+    checkDiagonalWinner();
+}
+
+function checkHorizontalWinner() {
     for (let i = 0; i < 9; i+=3) {
         if (fields[i] == fields[i+1] && fields[i+1] == fields[i+2] && fields[i]) {
-            console.log(fields[i] + ' du hast gewonnen!');
-            gameOver = true;
+            yesGameOver();
             directionOfLine = 'horizotal';
             addHorizontalWinnerLine(i);
         } 
     }
-//vertical
+}
+
+function checkVerticalWinner() {
     for (let i = 0; i < 3; i++) {
         if (fields[i] == fields[i+3] && fields[i+3] == fields[i+6] && fields[i]) {
-            console.log(fields[i] + ' du hast gewonnen!');
-            gameOver = true;
+            yesGameOver();
             directionOfLine = 'vertical';
             addVerticalWinnerLine(i);
         } 
     }
-//diagonal
+}
+
+function checkDiagonalWinner() {
     if (fields[0] == fields[4] && fields[4] == fields[8] && fields[0]) {
-        console.log(fields[0] + ' du hast gewonnen!');
-        gameOver = true;
+        yesGameOver();
         directionOfLine = 'diagonal1';
         addDiagonalWinnerLine();
     }
     if (fields[2] == fields[4] && fields[4] == fields[6] && fields[2]) {
-        console.log(fields[2] + ' du hast gewonnen!');
-        gameOver = true;
+        yesGameOver();
         directionOfLine = 'diagonal2';
         addDiagonalWinnerLine();
     }
@@ -106,8 +110,82 @@ function addVerticalWinnerLine(i) {
 
 function addDiagonalWinnerLine() {
     if (directionOfLine == 'diagonal1') {
-        document.getElementById('line7').classList.add('scale3')
+        document.getElementById('line7').classList.add('scale3');
     } else {
-        document.getElementById('line8').classList.add('scale4')
+        document.getElementById('line8').classList.add('scale4');
     }
 }
+
+function yesGameOver() {
+    gameOver = true;
+    setTimeout(function () {
+        document.getElementById('winnerDiv').classList.remove('d-none');
+    }, 1000);
+}
+
+function restart() {
+    gameOver = false;
+    fields = [];
+    document.getElementById('winnerDiv').classList.add('d-none');
+    resetCircleAndCross ();
+    resetWinnerLines();
+}
+
+function resetCircleAndCross () {
+    for (let i = 0; i < 9; i++) {
+        document.getElementById(`cross${i}`).classList.add('d-none');
+        document.getElementById(`circle${i}`).classList.add('d-none');
+        document.getElementById(`div${i}`).parentElement.classList.remove('notClickable');
+    }
+}
+
+function resetWinnerLines() {
+    resetHorizontalLines();
+    resetVerticalLines();
+    resetDiagonalLines();
+}
+
+function resetHorizontalLines() {
+    for (let i = 1; i < 4; i++) {
+        document.getElementById(`line${i}`).classList.remove('scale1');
+    }
+}
+
+function resetVerticalLines() {
+    for (let i = 4; i < 8; i++) {
+        document.getElementById(`line${i}`).classList.remove('scale2');
+    }
+}
+
+function resetDiagonalLines() {
+    for (let i = 7; i < 9; i++) {
+        document.getElementById(`line${i}`).classList.remove(`scale${i-4}`);
+        }
+}
+
+// MEDIA QUERY FUNCTION 
+
+
+function checkMediaQuery() {
+    if (window.innerWidth < 510) {
+        document.getElementById('line1').style = "top: 39px; left: 11px;";
+        document.getElementById('line2').style = "top: 131px; left: 11px;";
+        document.getElementById('line3').style = "top: 225px; left: 11px;";
+        document.getElementById('line4').style = "top: 133px; left: -81px;";
+        document.getElementById('line5').style = "top: 133px; right: 12px;";
+        document.getElementById('line6').style = "top: 133px; left: 105px;";
+        document.getElementById('line7').style = "top: 133px; left: -11px;";
+        document.getElementById('line8').style = "top: 133px; left: -15px;";
+    } else {
+        document.getElementById('line1').style = "top: 62px;";
+        document.getElementById('line2').style = "top: 202px;";
+        document.getElementById('line3').style = "top: 342px;";
+        document.getElementById('line4').style = "top: 202px; right: 147px;";
+        document.getElementById('line5').style = "top: 202px; right: 7px;";
+        document.getElementById('line6').style = "top: 202px; left: 148px;";
+        document.getElementById('line7').style = "top: 202px; left: -42px;";
+        document.getElementById('line8').style = "top: 202px; left: -42px;";
+    }
+}
+
+window.addEventListener('resize', checkMediaQuery);
